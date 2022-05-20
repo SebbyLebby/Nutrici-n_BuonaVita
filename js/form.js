@@ -2,14 +2,14 @@
 var botonAdicionar = document.querySelector("#adicionar-paciente"); //Se llama el id del botón en HTML
 botonAdicionar.addEventListener("click",function(event){
     event.preventDefault();
+    
     var form = document.querySelector("#form-adicionar")
-
     var paciente = capturarDatosPaciente(form);
     var tabla = document.querySelector("#tabla-pacientes");
     var pacienteTr = construirTr(paciente);
 
     tabla.appendChild(pacienteTr);
-
+    form.reset();
 });
 
 // Obteniendo los valores del formulario
@@ -32,16 +32,13 @@ function construirTr(paciente){
     // Creación de registro nuevo (igual de los elementos nuevos)
     var pacienteTr = document.createElement("tr"); // Obteniendo registro (fila) nuevo
     pacienteTr.classList.add("paciente"); // Agregando clase a cada uno de los elementos creados
-    var nombreTd = document.createElement("td"); // Elementos que estarán en ese registro
-    nombreTd.classList.add("info-nombre");
-    var pesoTd = document.createElement("td");
-    pesoTd.classList.add("info-peso");
-    var alturaTd = document.createElement("td");
-    alturaTd.classList.add("info-altura");
-    var gorduraTd = document.createElement("td");
-    gorduraTd.classList.add("info-gordura");
-    var imcTd = document.createElement("td");
-    imcTd.classList.add("info-imc");
+    
+    // Utilizando la función "construirTd" para ahorrar líneas de código
+    var nombreTd = construirTd(paciente.nombre, "info-nombre"); // Elementos que estarán en ese registro
+    var pesoTd = construirTd(paciente.peso, "info-peso");
+    var alturaTd = construirTd(paciente.altura, "info-altura");
+    var gorduraTd = construirTd(paciente.gordura, "info-gordura");
+    var imcTd = construirTd(paciente.imcTd, "info-imc");
 
     // Cargar los valores en las etiquetas creadas
     nombreTd.textContent = paciente.nombre; //Agarramos los 4 valores de la clase paciente (nombre, altura, peso, gordura)
@@ -63,6 +60,12 @@ function construirTr(paciente){
 
 }
 
-/*function construirTd(dato,clase){
+// Construcción de elementos Td
+function construirTd(dato,clase){
 
-}*/
+    var td = document.createElement("td"); // Generando "td"
+    td.classList.add(clase); // Dando nombre de la clase
+    td.textContent = dato;
+
+    return td;
+}
