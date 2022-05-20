@@ -6,6 +6,22 @@ titulo.textContent = "Buena Vida Nutrición";
 console.log("Estoy imprimiendo de una fuente externa que es principal.js");
 */
 
+/*Creando capturador de Evento con click
+var titulo = document.querySelector(".titulo");
+titulo.addEventListener("click",mostrarMensaje);
+
+function mostrarMensaje(){
+    console.log("usted hizo click en el título");
+}*/
+
+// Dando funcionalidad al botón adicionar y previniendo refresh de la página
+var botonAdicionar = document.querySelector("#adicionar-paciente"); //Se llama el id del botón en HTML
+botonAdicionar.addEventListener("click",function(event){
+    event.preventDefault();
+    console.log("usted hizo click en el botón adicionar");
+});
+
+
 // OBTENIENDO DATOS PARA CALCULAR IMC
 var pacientes = document.querySelectorAll(".paciente");
 

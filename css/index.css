@@ -133,6 +133,7 @@ button[disabled=disabled], button:disabled {
 	border: 1px solid red;
 }
 
+/* Nueva clase para llamar en JS -> .classList.add("clase")*/
 .paciente-incorrecto{
 	background-color: lightcoral;
 }
