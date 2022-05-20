@@ -8,7 +8,6 @@ console.log("Estoy imprimiendo de una fuente externa que es principal.js");
 
 // OBTENIENDO DATOS PARA CALCULAR IMC
 var pacientes = document.querySelectorAll(".paciente");
-console.log(pacientes);
 
 // CALCULANDO IMC PARA TODOS LOS PACIENTES
 
@@ -31,17 +30,19 @@ for(var i = 0; i < pacientes.length; i++){
         console.log("Peso incorrecto");
         tdIMC.textContent = "Peso incorrecto";
         pesoValido = false;
+        paciente.classList.add("paciente-incorrecto");
     }
 
     if(altura < 0  || altura >= 3.0){
         console.log("Altura incorrecta")
         tdIMC.textContent = "Altura incorrecta";
         alturaValida = false;
+        paciente.classList.add("paciente-incorrecto");
     }
 
     if(pesoValido && alturaValida){
         var imc = peso / (altura * altura);
-        tdIMC.textContent = imc;
+        tdIMC.textContent = imc.toFixed(2);
     }
 
 }
