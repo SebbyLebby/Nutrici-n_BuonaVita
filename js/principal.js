@@ -7,33 +7,42 @@ console.log("Estoy imprimiendo de una fuente externa que es principal.js");
 */
 
 // OBTENIENDO DATOS PARA CALCULAR IMC
-var paciente = document.querySelector("#primer-paciente");
+var pacientes = document.querySelectorAll(".paciente");
+console.log(pacientes);
 
-var tdPeso = paciente.querySelector(".info-peso");
-var peso = tdPeso.textContent;
+// CALCULANDO IMC PARA TODOS LOS PACIENTES
 
-var tdAltura = paciente.querySelector(".info-altura");
-var altura = tdAltura.textContent;
+for(var i = 0; i < pacientes.length; i++){
+    var paciente = pacientes[i];
 
-var tdIMC = paciente.querySelector(".info-imc");
+    var tdPeso = paciente.querySelector(".info-peso");
+    var peso = tdPeso.textContent;
 
-// CONDICIONALES PARA CALCULAR IMC
-pesoValido = true;
-alturaValida = true;
+    var tdAltura = paciente.querySelector(".info-altura");
+    var altura = tdAltura.textContent;
 
-if(peso < 0  || peso >= 1000){
-    console.log("Peso incorrecto");
-    tdIMC.textContent = "Peso incorrecto";
-    pesoValido = false;
+    var tdIMC = paciente.querySelector(".info-imc");
+
+    // CONDICIONALES PARA CALCULAR IMC
+    pesoValido = true;
+    alturaValida = true;
+
+    if(peso < 0  || peso >= 1000){
+        console.log("Peso incorrecto");
+        tdIMC.textContent = "Peso incorrecto";
+        pesoValido = false;
+    }
+
+    if(altura < 0  || altura >= 3.0){
+        console.log("Altura incorrecta")
+        tdIMC.textContent = "Altura incorrecta";
+        alturaValida = false;
+    }
+
+    if(pesoValido && alturaValida){
+        var imc = peso / (altura * altura);
+        tdIMC.textContent = imc;
+    }
+
 }
 
-if(altura < 0  || altura >= 3.0){
-    console.log("Altura incorrecta")
-    tdIMC.textContent = "Altura incorrecta";
-    alturaValida = false;
-}
-
-if(pesoValido && alturaValida){
-    var imc = peso / (altura * altura);
-    tdIMC.textContent = imc;
-}
