@@ -4,15 +4,11 @@ botonAdicionar.addEventListener("click",function(event){
     event.preventDefault();
     var form = document.querySelector("#form-adicionar")
 
-    // Obteniendo los valores de los inputs
-    var nombre = form.nombre.value;
-    var peso = form.peso.value;
-    var altura = form.altura.value;
-    var gordura = form.gordura.value;
+    var paciente = capturarDatosPaciente(form);
 
     var tabla = document.querySelector("#tabla-pacientes")
 
-    // Creación de registro nuevo
+    // Creación de registro nuevo (igual de los elementos nuevos)
     pacienteTr = document.createElement("tr"); //Obteniendo registro (fila) nuevo
     nombreTd = document.createElement("td"); // Elementos que estarán en ese registro
     alturaTd = document.createElement("td");
@@ -21,13 +17,13 @@ botonAdicionar.addEventListener("click",function(event){
     imcTd = document.createElement("td");
 
     // Cargar los valores en las etiquetas creadas
-    nombreTd.textContent = nombre;
-    alturaTd.textContent = altura;
-    pesoTd.textContent = peso;
-    gorduraTd.textContent = gordura;
+    nombreTd.textContent = paciente.nombre; //Agarramos los 4 valores de la clase paciente (nombre, altura, peso, gordura)
+    alturaTd.textContent = paciente.altura;
+    pesoTd.textContent = paciente.peso;
+    gorduraTd.textContent = paciente.gordura;
     imcTd.textContent = calcularIMC(peso,altura);
 
-    // Relacionando valores con appendChild hacia el HTML
+    // Relacionando valores de los elementos con appendChild hacia el HTML
     pacienteTr.appendChild(nombreTd);
     pacienteTr.appendChild(pesoTd);
     pacienteTr.appendChild(alturaTd);
@@ -39,3 +35,17 @@ botonAdicionar.addEventListener("click",function(event){
     console.log(pacienteTr);
 
 });
+
+// Obteniendo los valores del formulario
+function capturarDatosPaciente(form){
+
+    //Creando clase "paciente"
+    var paciente = {
+        nombre: form.nombre.value,
+        peso: form.peso.value,
+        altura: form.altura.value,
+        gordura: form.gordura.value
+    }
+
+    return paciente;
+}
