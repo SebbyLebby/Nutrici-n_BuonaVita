@@ -30,14 +30,14 @@ for(var i = 0; i < pacientes.length; i++){
         console.log("Peso incorrecto");
         tdIMC.textContent = "Peso incorrecto";
         pesoValido = false;
-        paciente.classList.add("paciente-incorrecto");
+        paciente.classList.add("paciente-incorrecto"); // Llamando nueva clase en CSS con JS
     }
 
     if(altura < 0  || altura >= 3.0){
         console.log("Altura incorrecta")
         tdIMC.textContent = "Altura incorrecta";
         alturaValida = false;
-        paciente.classList.add("paciente-incorrecto");
+        paciente.classList.add("paciente-incorrecto"); // Llamando nueva clase en CSS con JS
     }
 
     if(pesoValido && alturaValida){
